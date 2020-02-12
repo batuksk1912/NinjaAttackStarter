@@ -6,9 +6,18 @@ class MenuScene: SKScene {
     let playButtonTex = SKTexture(imageNamed: "play")
 
     override func didMove(to view: SKView) {
+      
+      let name = SKLabelNode(fontNamed: "Chalkduster")
+      name.text = "Ninja Attack"
+      name.fontSize = 65
+      name.fontColor = SKColor.red
+      name.position = CGPoint(x: frame.midX, y: frame.midY * 1.6)
+         
+      addChild(name)
 
         playButton = SKSpriteNode(texture: playButtonTex)
-        playButton.position = CGPoint(x: frame.midX, y: frame.midY)
+      playButton.position = CGPoint(x: frame.midX, y: frame.midY/1.3)
+      playButton.setScale(0.9)
         self.addChild(playButton)
     }
 

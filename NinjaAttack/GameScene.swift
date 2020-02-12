@@ -202,15 +202,15 @@ class GameScene: SKScene {
     
     // Determine speed of the monster
     if (levelInit == "easy") {
-    actualDuration = random(min: CGFloat(2.0), max: CGFloat(4.0))
+    actualDuration = random(min: CGFloat(2.2), max: CGFloat(4.2))
     }
     
     if (levelInit == "medium") {
-    actualDuration = random(min: CGFloat(1.0), max: CGFloat(2.0))
+    actualDuration = random(min: CGFloat(1.1), max: CGFloat(2.1))
     }
     
     if (levelInit == "hard") {
-    actualDuration = random(min: CGFloat(0.8), max: CGFloat(1.6))
+    actualDuration = random(min: CGFloat(0.9), max: CGFloat(1.8))
     }
     
     // Create the actions
