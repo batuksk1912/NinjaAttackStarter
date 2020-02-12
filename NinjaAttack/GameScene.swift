@@ -69,15 +69,26 @@ extension CGPoint {
 
 class GameScene: SKScene {
   
+  var levelInit = ""
+  
+  init(size: CGSize, levels: String) {
+    super.init(size: size)
+    levelInit = levels
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
   // set up player node.
   let player = SKSpriteNode(imageNamed: "superhero")
+  var monstersDestroyed = 0
   var playerIsTouched = false
-
     
   override func didMove(to view: SKView) {
-    backgroundColor = SKColor.darkGray
+    backgroundColor = SKColor.lightGray
     //player.position = CGPoint(x: size.width * 0.9, y: size.height * 0.15)
-    player.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
+    player.position = CGPoint(x: size.width * 0.03, y: size.height * 0.5)
     player.setScale(0.1)
     addChild(player)
     physicsWorld.gravity = .zero
@@ -103,6 +114,8 @@ class GameScene: SKScene {
 
   override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
       if (playerIsTouched == true) {
+        let limit = SKConstraint.positionX(SKRange(constantValue: size.width * 0.03))
+        player.constraints = [limit]
           player.position = (touches.first?.location(in: self))!
       }
   }
@@ -185,13 +198,32 @@ class GameScene: SKScene {
     // Add the monster to the scene
     addChild(monster)
     
+    var actualDuration = random(min: CGFloat(2.0), max: CGFloat(4.0))
+    
     // Determine speed of the monster
-    let actualDuration = random(min: CGFloat(2.0), max: CGFloat(4.0))
+    if (levelInit == "easy") {
+    actualDuration = random(min: CGFloat(2.0), max: CGFloat(4.0))
+    }
+    
+    if (levelInit == "medium") {
+    actualDuration = random(min: CGFloat(1.0), max: CGFloat(2.0))
+    }
+    
+    if (levelInit == "hard") {
+    actualDuration = random(min: CGFloat(0.8), max: CGFloat(1.6))
+    }
     
     // Create the actions
     let actionMove = SKAction.move(to: CGPoint(x: actualX, y: -monster.size.width/2), duration: TimeInterval(actualDuration))
     let actionMoveDone = SKAction.removeFromParent()
-    monster.run(SKAction.sequence([actionMove, actionMoveDone]))
+    let loseAction = SKAction.run() { [weak self] in
+      guard let `self` = self else { return }
+      let monstersString = String(self.monstersDestroyed)
+      let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+      let gameOverScene = GameOverScene(size: self.size, won: false, score: monstersString)
+      self.view?.presentScene(gameOverScene, transition: reveal)
+    }
+    monster.run(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
   }
   
   func projectileDidCollideWithMonster(projectile: SKSpriteNode, monster: SKSpriteNode) {
@@ -207,6 +239,13 @@ class GameScene: SKScene {
     fire!.run(waitAction, completion: {
       fire!.removeFromParent()
     })
+    monstersDestroyed += 1
+    if monstersDestroyed >= 25 {
+      let myScore = String(monstersDestroyed)
+      let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+      let gameOverScene = GameOverScene(size: self.size, won: true,score: myScore)
+      view?.presentScene(gameOverScene, transition: reveal)
+    }
   }
 }
 

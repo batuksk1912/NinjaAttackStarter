@@ -10,6 +10,9 @@
 		04652E3523F222DF001BC717 /* explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04652E3323F222DF001BC717 /* explosion.sks */; };
 		04652E3623F222DF001BC717 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04652E3423F222DF001BC717 /* Assets.xcassets */; };
 		04652E3823F22D28001BC717 /* gun-shot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 04652E3723F22D28001BC717 /* gun-shot.wav */; };
+		04652E3A23F37204001BC717 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04652E3923F37203001BC717 /* GameOverScene.swift */; };
+		04652E3C23F38561001BC717 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04652E3B23F38561001BC717 /* MenuScene.swift */; };
+		04652E3E23F4ACB1001BC717 /* LevelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04652E3D23F4ACB1001BC717 /* LevelScene.swift */; };
 		5C2901831F8F6DE700803663 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */; };
 		AFD63F872036493600E08C66 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD63F862036493600E08C66 /* GameViewController.swift */; };
 		AFD63F892036497100E08C66 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD63F882036497100E08C66 /* GameScene.swift */; };
@@ -24,6 +27,9 @@
 		04652E3323F222DF001BC717 /* explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = explosion.sks; sourceTree = "<group>"; };
 		04652E3423F222DF001BC717 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04652E3723F22D28001BC717 /* gun-shot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "gun-shot.wav"; sourceTree = "<group>"; };
+		04652E3923F37203001BC717 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		04652E3B23F38561001BC717 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		04652E3D23F4ACB1001BC717 /* LevelScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelScene.swift; sourceTree = "<group>"; };
 		5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = NinjaAttack/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFD63F862036493600E08C66 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = NinjaAttack/GameViewController.swift; sourceTree = "<group>"; };
 		AFD63F882036497100E08C66 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = NinjaAttack/GameScene.swift; sourceTree = "<group>"; };
@@ -85,9 +91,12 @@
 				D2A5F2071F4A9144005CD714 /* Main.storyboard */,
 				04652E3323F222DF001BC717 /* explosion.sks */,
 				D2A5F20A1F4A9144005CD714 /* Assets.xcassets */,
+				04652E3D23F4ACB1001BC717 /* LevelScene.swift */,
+				04652E3B23F38561001BC717 /* MenuScene.swift */,
 				5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */,
 				D2A5F20F1F4A9144005CD714 /* Info.plist */,
 				AFD63F882036497100E08C66 /* GameScene.swift */,
+				04652E3923F37203001BC717 /* GameOverScene.swift */,
 				AFD63F862036493600E08C66 /* GameViewController.swift */,
 				04652E3423F222DF001BC717 /* Assets.xcassets */,
 			);
@@ -174,6 +183,9 @@
 			files = (
 				AFD63F892036497100E08C66 /* GameScene.swift in Sources */,
 				AFD63F872036493600E08C66 /* GameViewController.swift in Sources */,
+				04652E3C23F38561001BC717 /* MenuScene.swift in Sources */,
+				04652E3E23F4ACB1001BC717 /* LevelScene.swift in Sources */,
+				04652E3A23F37204001BC717 /* GameOverScene.swift in Sources */,
 				D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
