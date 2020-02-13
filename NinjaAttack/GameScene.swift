@@ -70,10 +70,12 @@ extension CGPoint {
 class GameScene: SKScene {
   
   var levelInit = ""
+  var type = ""
   
-  init(size: CGSize, levels: String) {
+  init(size: CGSize, levels: String, types: String) {
     super.init(size: size)
     levelInit = levels
+    type = types
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -81,9 +83,11 @@ class GameScene: SKScene {
   }
   
   // set up player node.
-  let player = SKSpriteNode(imageNamed: "superhero")
+  let player = SKSpriteNode(imageNamed: "lenin")
   var monstersDestroyed = 0
   var playerIsTouched = false
+  var turnCounter = 0
+  var arrayScore = [String]()
     
   override func didMove(to view: SKView) {
     backgroundColor = SKColor.lightGray
@@ -180,7 +184,8 @@ class GameScene: SKScene {
   func addMonster() {
     
     // Create sprite
-    let monster = SKSpriteNode(imageNamed: "monster")
+    let monster = SKSpriteNode(imageNamed: "hitler")
+    monster.setScale(0.2)
     monster.physicsBody = SKPhysicsBody(rectangleOf: monster.size) // 1
     monster.physicsBody?.isDynamic = true // 2
     monster.physicsBody?.categoryBitMask = PhysicsCategory.monster // 3
@@ -214,19 +219,37 @@ class GameScene: SKScene {
     }
     
     // Create the actions
+    if (type == "single") {
     let actionMove = SKAction.move(to: CGPoint(x: actualX, y: -monster.size.width/2), duration: TimeInterval(actualDuration))
     let actionMoveDone = SKAction.removeFromParent()
     let loseAction = SKAction.run() { [weak self] in
       guard let `self` = self else { return }
       let monstersString = String(self.monstersDestroyed)
+      let monsterStringA = [monstersString]
       let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-      let gameOverScene = GameOverScene(size: self.size, won: false, score: monstersString)
+      let gameOverScene = GameOverScene(size: self.size, won: false, score: monsterStringA)
       self.view?.presentScene(gameOverScene, transition: reveal)
     }
     monster.run(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
+    }
+    
+    if (type == "multi") {
+       let actionMove = SKAction.move(to: CGPoint(x: actualX, y: -monster.size.width/2), duration: TimeInterval(actualDuration))
+      let actionMoveDone = SKAction.removeFromParent()
+        let loseAction = SKAction.run() { [weak self] in
+          guard let `self` = self else { return }
+          let monstersString = String(self.monstersDestroyed)
+          self.arrayScore.append(monstersString)
+          let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+          let gameOverScene = GameOverScene(size: self.size, won: false, score: self.arrayScore)
+          self.view?.presentScene(gameOverScene, transition: reveal)
+        }
+       monster.run(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
+       }
   }
   
   func projectileDidCollideWithMonster(projectile: SKSpriteNode, monster: SKSpriteNode) {
+    if (type == "single") {
      run(SKAction.playSoundFileNamed("gun-shot.wav", waitForCompletion: false))
     print("Hit")
     let fire = SKEmitterNode(fileNamed: "explosion")
@@ -242,9 +265,36 @@ class GameScene: SKScene {
     monstersDestroyed += 1
     if monstersDestroyed >= 25 {
       let myScore = String(monstersDestroyed)
+      let myScoreA = [myScore]
       let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-      let gameOverScene = GameOverScene(size: self.size, won: true,score: myScore)
+      let gameOverScene = GameOverScene(size: self.size, won: true,score: myScoreA)
       view?.presentScene(gameOverScene, transition: reveal)
+    }
+  }
+    
+    if (type == "multi") {
+       run(SKAction.playSoundFileNamed("gun-shot.wav", waitForCompletion: false))
+      print("Hit")
+      print(turnCounter)
+      let fire = SKEmitterNode(fileNamed: "explosion")
+      fire?.position = monster.position
+      addChild(fire!)
+      fire?.particleLifetime = 0.1
+      projectile.removeFromParent()
+      monster.removeFromParent()
+      let waitAction = SKAction.wait(forDuration: TimeInterval(fire!.particleLifetime + (fire!.particleLifetimeRange/2.0)))
+      fire!.run(waitAction, completion: {
+        fire!.removeFromParent()
+      })
+      monstersDestroyed += 1
+      if (monstersDestroyed >= 25) {
+        print("counter:" + String(turnCounter))
+        let myScore = String(monstersDestroyed)
+        arrayScore.append(myScore)
+        let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+        let gameOverScene = GameOverScene(size: self.size, won: true,score: arrayScore)
+        view?.presentScene(gameOverScene, transition: reveal)
+      }
     }
   }
 }

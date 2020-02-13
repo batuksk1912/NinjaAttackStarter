@@ -13,6 +13,7 @@
 		04652E3A23F37204001BC717 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04652E3923F37203001BC717 /* GameOverScene.swift */; };
 		04652E3C23F38561001BC717 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04652E3B23F38561001BC717 /* MenuScene.swift */; };
 		04652E3E23F4ACB1001BC717 /* LevelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04652E3D23F4ACB1001BC717 /* LevelScene.swift */; };
+		04652E4023F4D291001BC717 /* TypeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04652E3F23F4D291001BC717 /* TypeScene.swift */; };
 		5C2901831F8F6DE700803663 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */; };
 		AFD63F872036493600E08C66 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD63F862036493600E08C66 /* GameViewController.swift */; };
 		AFD63F892036497100E08C66 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD63F882036497100E08C66 /* GameScene.swift */; };
@@ -30,6 +31,7 @@
 		04652E3923F37203001BC717 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		04652E3B23F38561001BC717 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		04652E3D23F4ACB1001BC717 /* LevelScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelScene.swift; sourceTree = "<group>"; };
+		04652E3F23F4D291001BC717 /* TypeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeScene.swift; sourceTree = "<group>"; };
 		5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = NinjaAttack/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFD63F862036493600E08C66 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = NinjaAttack/GameViewController.swift; sourceTree = "<group>"; };
 		AFD63F882036497100E08C66 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = NinjaAttack/GameScene.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				D2A5F20A1F4A9144005CD714 /* Assets.xcassets */,
 				04652E3D23F4ACB1001BC717 /* LevelScene.swift */,
 				04652E3B23F38561001BC717 /* MenuScene.swift */,
+				04652E3F23F4D291001BC717 /* TypeScene.swift */,
 				5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */,
 				D2A5F20F1F4A9144005CD714 /* Info.plist */,
 				AFD63F882036497100E08C66 /* GameScene.swift */,
@@ -183,6 +186,7 @@
 			files = (
 				AFD63F892036497100E08C66 /* GameScene.swift in Sources */,
 				AFD63F872036493600E08C66 /* GameViewController.swift in Sources */,
+				04652E4023F4D291001BC717 /* TypeScene.swift in Sources */,
 				04652E3C23F38561001BC717 /* MenuScene.swift in Sources */,
 				04652E3E23F4ACB1001BC717 /* LevelScene.swift in Sources */,
 				04652E3A23F37204001BC717 /* GameOverScene.swift in Sources */,

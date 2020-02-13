@@ -1,7 +1,7 @@
 import SpriteKit
 
 class GameOverScene: SKScene {
-  init(size: CGSize, won:Bool, score:String) {
+  init(size: CGSize, won:Bool, score:[String]) {
     super.init(size: size)
     
     // 1
@@ -19,7 +19,7 @@ class GameOverScene: SKScene {
     addChild(label)
     
     let scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
-    scoreLabel.text = "Your score: " + score
+    scoreLabel.text = "Your score: " + score[0]
     scoreLabel.fontSize = 18
     scoreLabel.fontColor = SKColor.black
     scoreLabel.position = CGPoint(x: size.width/2, y: size.height/3)
@@ -32,7 +32,7 @@ class GameOverScene: SKScene {
         // 5
         guard let `self` = self else { return }
         let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-        let scene = LevelScene(size: size)
+        let scene = LevelScene(size: size, type: "single")
         self.view?.presentScene(scene, transition:reveal)
       }
       ]))

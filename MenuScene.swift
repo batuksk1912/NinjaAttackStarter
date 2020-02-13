@@ -8,7 +8,7 @@ class MenuScene: SKScene {
     override func didMove(to view: SKView) {
       
       let name = SKLabelNode(fontNamed: "Chalkduster")
-      name.text = "Ninja Attack"
+      name.text = "Lenin Attack"
       name.fontSize = 65
       name.fontColor = SKColor.red
       name.position = CGPoint(x: frame.midX, y: frame.midY * 1.6)
@@ -29,7 +29,7 @@ class MenuScene: SKScene {
             if node == playButton {
               if view != nil {
                     let transition:SKTransition = SKTransition.fade(withDuration: 1)
-                let scene:SKScene = LevelScene(size: self.size)
+                let scene:SKScene = TypeScene(size: self.size)
                     self.view?.presentScene(scene, transition: transition)
                 }
             }

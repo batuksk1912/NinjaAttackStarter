@@ -1,6 +1,17 @@
 import SpriteKit
 
 class LevelScene: SKScene {
+  
+  var typeS = ""
+  
+  init(size: CGSize, type: String) {
+    super.init(size: size)
+    typeS = type
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
     var easyButton = SKSpriteNode()
     let easyButtonTex = SKTexture(imageNamed: "easy")
@@ -37,7 +48,7 @@ class LevelScene: SKScene {
             if node == easyButton {
               if view != nil {
                     let transition:SKTransition = SKTransition.fade(withDuration: 1)
-                let scene:SKScene = GameScene(size: self.size, levels:"easy")
+                let scene:SKScene = GameScene(size: self.size, levels:"easy", types: typeS)
                     self.view?.presentScene(scene, transition: transition)
                 }
             }
@@ -45,7 +56,7 @@ class LevelScene: SKScene {
           if node == mediumButton {
             if view != nil {
                   let transition:SKTransition = SKTransition.fade(withDuration: 1)
-              let scene:SKScene = GameScene(size: self.size, levels:"medium")
+              let scene:SKScene = GameScene(size: self.size, levels:"medium", types: typeS)
                   self.view?.presentScene(scene, transition: transition)
               }
           }
@@ -53,7 +64,7 @@ class LevelScene: SKScene {
           if node == hardButton {
             if view != nil {
                   let transition:SKTransition = SKTransition.fade(withDuration: 1)
-              let scene:SKScene = GameScene(size: self.size, levels:"hard")
+              let scene:SKScene = GameScene(size: self.size, levels:"hard", types: typeS)
                   self.view?.presentScene(scene, transition: transition)
               }
           }
